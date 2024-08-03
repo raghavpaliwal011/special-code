@@ -1,54 +1,64 @@
 import pyttsx3
 import tkinter as tk
 from tkinter import *
-
-# Initialize the pyttsx3 engine
+import webbrowser
 engine = pyttsx3.init()
-engine.setProperty('rate', 150)  # Speed of speech
-engine.setProperty('volume', 1.0)  # Volume level
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)  # Set to female voice
+engine.setProperty('voice', voices[1].id)
+engine.runAndWait()
 
-# Function to speak text
-def speak(text):
-    engine.say(text)
-    engine.runAndWait()
+def speak_text():
+    text = entry1.get()
+    if text:
+        engine.say(text)
+        engine.runAndWait()
 
-# Function to handle button click
-def on_button_click():
-    user_input = entry.get()
-    if user_input.strip() == "raghav paliwal the god of gta 5":
-        return
-    textbox.insert(END, "You: " + user_input + "\n")
-    
-    # Simple echo bot response
-    response = "" + user_input
-    textbox.insert(END, response + "\n")
-    
-    # Speak the response
-    speak(response)
-    
-    # Clear the entry box
-    entry.delete(0, END)
+    else:
+        engine.say("please enter some text")
+        engine.runAndWait()
 
-# Create the main window
+def star_func():
+    info = entry2.get()
+    if info == "open youtube":
+        webbrowser.open("https://www.youtube.com")
+    else:
+        engine.say("sorry but i cannot proceed")
+
+def star_func():
+    info = entry2.get()
+    if info == "open prime":
+        webbrowser.open("https://www.primevideo.com/")
+    else:
+        engine.say("sorry i cannot proceed")
+
+def star_func():
+    info = entry2.get()
+    if info == "open extramarks":
+        webbrowser.open("https://www.extramarks.com/")
+    else:
+        engine.say("sorry but i cannot proceed")
+        
 root = tk.Tk()
-root.geometry("1000x1000")
-root.config(bg="white")
-root.title("Friday")
+root.title("friday")
 
-# Create and pack widgets
-label = tk.Label(root, text="Friday", font=("Arial", 18))
-label.pack(pady=10)
+root.geometry("500x800")
 
-textbox = tk.Text(root, height=20, width=100, font=("Arial", 16), bg="black", fg="white")
-textbox.pack(pady=10)
+root.config(bg="black")
 
-entry = tk.Entry(root, font=("Arial", 16))
-entry.pack(pady=10)
+label1 = tk.Label(root,text = "friday",height = 2,width=10,font=50,bg="black",fg="white")
+label1.pack(pady=20)
 
-button = tk.Button(root, text="Start Func", bg="black", fg="white", command=on_button_click)
-button.pack(pady=20)
+entry1 = tk.Entry(root, width=50)
+entry1.pack(pady=10)
 
-# Start the main event loop
+entry2 = tk.Entry(root, width=50)
+entry2.pack(pady=110)
+
+button= tk.Button(root,text="start function",command=speak_text,height=5,width=10)
+button.pack(pady=40)
+
+button2 = tk.Button(root,text = "go func",command = star_func,height = 5, width = 10)
+button2.pack(pady=60)
+
 root.mainloop()
+
