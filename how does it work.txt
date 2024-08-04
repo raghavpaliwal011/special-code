@@ -1,6 +1,169 @@
-this is a special code , named voice assistant :
-
-introduction :> i am going to make a voice assistant , which i had done before but this time for sure i
-am going to give it a perticular window all by my own
+introduction :>
+this is the introduction of how and what i will do in this code so, i am making a chatbot by using tkinter
+and pyttsx3 in python which means that this chatbot will have its own gui 
 
 lets start:>
+
+1/import pyttsx3
+2/import tkinter as tk
+3/from tkinter import *
+4/import webbrowser
+
+5/ to use pyttsx3:>
+
+important things are :>
+
+to use this we need to use this code 
+
+engine = pyttsx3.init()
+
+now in this code engine is the variable in which the pyttsx3 will be used 
+
+6/ to set voice type 
+
+a/voice set up
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+
+here getProperty means that this function will get that property like if we want voice then it will get
+voice function and setProperty means that this function will set that property as their final property
+and 0 means that it will have male voice and 1 means it will have female voice and .id means that it will
+that this is the id verification
+
+7/volume set up 
+
+engine.setProperty('rate', 150) 
+engine.setProperty('volume', 1.0)
+
+rate means the speed of the voice assistant and volume means the volume only 
+
+8/setting it up to say something
+engine.say("the thing which you want it to say)
+engine.runandwait()
+
+engine.say will make it say what you want it to say and engine.runandwait will run the programme
+
+9/ now using tkinter 
+
+10/ setting up the base of the gui
+
+root = tk.Tk()
+root.title("friday")
+
+here root is the variable in which the tkinter is comprised which means if we want to use tkinter anywhere
+we can simply access it by using root function and root.title will set up the title of the function
+
+11/setting up the geometry and colour
+
+root.geometry("500x700")
+root.config(bg = "light blue")
+
+the root.geometry will set the height and width of the gui and root.config will set the colour
+
+12/setting up the header
+
+label1 = tk.Label(root,text = "friday",height = 2,width=10,font=50,bg="white",fg="black")
+label1.pack(pady=20)
+
+in this the label1 is the variable in which all these functions comprise in this the tk.Label is the 
+configeration code in which all the details are there like height, width, font, background, fg
+label1.pack function will run this code and pady means the y-axis
+
+13/setting up the entry
+
+entry1 = tk.Entry(root, width=50)
+entry1.pack(pady=10)
+
+entry1 is the variable in which all the functions comprise and tk.entry is the function in which we will set
+up its width usually entry function is used to take the userinput meaning that the entry function will 
+allow the function to take the userinput and proceed and entry.pack will run the function
+
+14/setting up the button 
+
+button1 = tk.Button(root,text = "to youtube",command = speak_text,height = 5, width = 10)
+button1.pack(pady=60,side=tk.LEFT, padx=10)
+
+this function will set the button which will run the button in this text will be name of this button and
+command will be the function according to which the programme mill work
+
+15/setting up the functions which will run these programmes
+
+def speak_text():
+    text = entry1.get()
+    if text:
+        engine.say(text)
+        engine.runAndWait()
+
+    else:
+        engine.say("please enter some text")
+        engine.runAndWait()
+
+in this function the text variable will get the entry1's input and proceed 
+
+16/root.mainloot
+
+this function will run the whole function controlled by tkinter
+
+17/ 
+import pyttsx3
+import tkinter as tk
+from tkinter import *
+import webbrowser
+engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+engine.runAndWait()
+
+def speak_text():
+    text = entry1.get()
+    if text:
+        engine.say(text)
+        engine.runAndWait()
+
+    else:
+        engine.say("please enter some text")
+        engine.runAndWait()
+
+def star_func():
+    info = entry2.get()
+    if info == "open youtube":
+        webbrowser.open("https://www.youtube.com")
+    else:
+        engine.say("sorry but i cannot proceed")
+
+def go_func():
+    infor = entry2.get()
+    if infor == "open prime":
+        webbrowser.open("https://www.primevideo.com/")
+    else:
+        engine.say ("sorry but i cannot proceed")
+        
+root = tk.Tk()
+root.title("friday")
+
+root.geometry("2000x800")
+
+root.config(bg="light blue")
+
+label1 = tk.Label(root,text = "friday",height = 2,width=10,font=50,bg="white",fg="black")
+label1.pack(pady=20)
+
+entry1 = tk.Entry(root, width=50)
+entry1.pack(pady=10)
+
+entry2 = tk.Entry(root, width=50)
+entry2.pack(pady=110)
+
+button= tk.Button(root,text="start function",command=speak_text,height=5,width=10)
+button.pack(pady=40)
+
+button2 = tk.Button(root,text = "to youtube",command = star_func,height = 5, width = 10)
+button2.pack(pady=60,side=tk.LEFT, padx=10)
+
+button3 = tk.Button(root, text = "to prime",command = go_func,height= 5,width = 10)
+button3.pack(pady = 60,side = tk.RIGHT,padx= 10)
+root.mainloop()
+
+here the webbrowser is the module which will run open the web apps according to the command given
+
+this is how this whole code works
