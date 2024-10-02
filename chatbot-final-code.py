@@ -19,14 +19,14 @@ def speak_text():
 
 def star_func():
     info = entry2.get()
-    if info == "open youtube":
+    if info is not None:
         webbrowser.open("https://www.youtube.com")
     else:
         engine.say("sorry but i cannot proceed")
 
 def go_func():
     infor = entry2.get()
-    if infor == "open prime":
+    if infor is not None:
         webbrowser.open("https://www.primevideo.com/")
     else:
         engine.say ("sorry but i cannot proceed")
